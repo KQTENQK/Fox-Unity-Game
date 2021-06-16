@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8472656420109453801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8472656420109453800}
+  - component: {fileID: 8472656420109453803}
+  m_Layer: 0
+  m_Name: EnvironmentAreaGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8472656420109453800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8472656420109453801}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8472656420109453803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8472656420109453801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a59228d672b1c468ccc200fcf4dc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _size: {x: 160, y: 160}
+  _placeAreaBounds: {x: 5, y: 5}
+  _xWallIndent: 6
+  _rarity: 20
+  _environmentOutGameAreaTemplates:
+  - {fileID: 8592165375347159503, guid: 50d6a2a9f2a88294c8e59d0383f1f441, type: 3}
+  - {fileID: 5773428273891527171, guid: 2bc154a865ce93641ba2fb463514bdf0, type: 3}
+  - {fileID: 6214484614693760949, guid: d9fc8ed0fc966a04fa046b029b2ccf87, type: 3}
+  - {fileID: 8438768207790535832, guid: e900694c8d0a20d4ba3a79ba51ba2061, type: 3}
+  - {fileID: 1501762057504615040, guid: 314d5dae831e3bb45ae120b7169dc546, type: 3}
+  - {fileID: 4790974142649199884, guid: 0ec3f0445851f3d42ba7c8643a03168f, type: 3}
+  - {fileID: 1999305250867825576, guid: d17453bdb3ee8cb499bc7268f07bdf3e, type: 3}
+  - {fileID: 820327211950042211, guid: d3259cc019868354dbd958577305f3b5, type: 3}
+  - {fileID: 2361242153596349978, guid: fbb408b82c6add1459739db36fe162c6, type: 3}
+  - {fileID: 5097975047163738862, guid: 3d57668a7cadf954884fd3807e286db9, type: 3}
+  - {fileID: 7712759906170040870, guid: ad18fdb61bbb25e498f8d36d5efaa33a, type: 3}
+  - {fileID: 2178424060134403945, guid: 58276b6f99bc48a4c959c69d2fd71afc, type: 3}
+  - {fileID: 5995875806362491915, guid: ae6924f7244fc6a409ce0f6efd1fc52e, type: 3}
+  _environmentInGameAreaTemplates:
+  - {fileID: 2332782656464894791, guid: bca94c1e26b02224493b90e0f3e3457e, type: 3}
