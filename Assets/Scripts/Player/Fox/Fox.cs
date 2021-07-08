@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fox : Player
+public class Fox : Hero
 {
-    public override void UseAbility()
+    protected override void Ultimate()
     {
+
     }
 }

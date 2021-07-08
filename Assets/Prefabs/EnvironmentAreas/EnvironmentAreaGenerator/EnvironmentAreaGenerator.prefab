@@ -43,10 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a59228d672b1c468ccc200fcf4dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _size: {x: 160, y: 160}
-  _placeAreaBounds: {x: 5, y: 5}
+  _placeAreaBounds: {x: 25, y: 5}
   _xWallIndent: 6
-  _rarity: 20
+  _rarity: 35
   _environmentOutGameAreaTemplates:
   - {fileID: 8592165375347159503, guid: 50d6a2a9f2a88294c8e59d0383f1f441, type: 3}
   - {fileID: 5773428273891527171, guid: 2bc154a865ce93641ba2fb463514bdf0, type: 3}

@@ -1,25 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class EnvironmentAreaGenerator : MonoBehaviour
 {
-    [SerializeField] private Vector2Int _size;
     [SerializeField] private Vector2Int _placeAreaBounds;
     [SerializeField] private int _xWallIndent;
     [SerializeField] private int _rarity;
     [SerializeField] private List<GameObject> _environmentOutGameAreaTemplates;
     [SerializeField] private List<GameObject> _environmentInGameAreaTemplates;
 
-    private float _xWallOffset;
+    private Vector2Int _size;
+    private float _xLeftWallOffset;
     private float _xWallLength;
     private GameObject[,] _grid;
 
     private void Awake()
     {
+        Renderer planeRenderer = GetComponentInParent<Plane>().gameObject.GetComponent<Renderer>();
+        _size = new Vector2Int((int)planeRenderer.bounds.size.x, (int)planeRenderer.bounds.size.z);
         _grid = new GameObject[_size.x - _placeAreaBounds.x, _size.y - _placeAreaBounds.y];
-        _xWallOffset = (_size.y / 2) - GetComponentInParent<PlaneBuilder>().XWallOffset - _xWallIndent;
+        _xLeftWallOffset = (_size.x / 2) - GetComponentInParent<PlaneBuilder>().XWallOffset - _xWallIndent;
         _xWallLength = 2 * GetComponentInParent<PlaneBuilder>().XWallOffset + _xWallIndent;
     }
 
@@ -60,7 +61,7 @@ public class EnvironmentAreaGenerator : MonoBehaviour
                 if (_grid[x, z] == null)
                 {
                     GameObject selectedArea;
-                    if (x >= (int)(_xWallOffset) && x < (int)(_xWallOffset + _xWallLength))
+                    if (x >= (int)(_xLeftWallOffset) && x < (int)(_xLeftWallOffset + _xWallLength))
                     {
                         selectedArea = _environmentInGameAreaTemplates[Random.Range(0, _environmentInGameAreaTemplates.Count)];
                         TryPlaceEnvironmentArea(selectedArea, x + _xWallIndent, z, _rarity);

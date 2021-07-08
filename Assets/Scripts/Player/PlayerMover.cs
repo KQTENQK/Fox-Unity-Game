@@ -15,8 +15,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private SwipeDetecter _swipeDetecter;
 
     private int _swipeCount;
-
-
+    private Vector3 _moveDirection;
 
     private void OnEnable()
     {
@@ -29,9 +28,24 @@ public class PlayerMover : MonoBehaviour
         _swipeDetecter.Swiped -= OnSwiped;
     }
 
+    private void Start()
+    {
+        _moveDirection = transform.forward * _speed;
+    }
+
     private void FixedUpdate()
     {
-        transform.Translate(transform.forward * _speed);
+        Move(_moveDirection);
+    }
+
+    public void Stop()
+    {
+        _moveDirection = Vector3.zero;
+    }
+
+    private void Move(Vector3 moveDirection)
+    {
+        transform.Translate(moveDirection);
     }
 
     private void OnSwiped(Vector2 direction)

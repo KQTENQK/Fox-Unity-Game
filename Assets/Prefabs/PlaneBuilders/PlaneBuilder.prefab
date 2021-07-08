@@ -47,7 +47,7 @@ MonoBehaviour:
     type: 3}
   _environmentGeneratorTemplate: {fileID: 8472656420109453801, guid: 1df75861b519c0149b1210ce3e94a70e,
     type: 3}
+  _sphereSpawnerTemplate: {fileID: 7995099413249541861, guid: 7b019b3fe931e2b468f97bde76772031,
+    type: 3}
   _xWallOffset: 6
   _yWallOffset: 2.5
-  _startPosition: -80
-  _leftLocalTopStartPosition: {x: -80, y: 0, z: -80}

@@ -57,8 +57,6 @@ public class SwipeDetecter : MonoBehaviour
                 Swiped?.Invoke(Vector2.left);
             else if (Vector2.Dot(Vector2.right, direction) > _swipeDeviation)
                 Swiped?.Invoke(Vector2.right);
-            else if (Vector2.Dot(Vector2.up, direction) > _swipeDeviation)
-                Swiped?.Invoke(Vector2.up);
         }
     }
 }
