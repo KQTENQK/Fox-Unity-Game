@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-93616303586092265
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 7
+  threshold:
+    overrideState: 1
+    value: 1
+  softKnee:
+    overrideState: 1
+    value: 1
+  clamp:
+    overrideState: 1
+    value: 65472
+  diffusion:
+    overrideState: 1
+    value: 5
+  anamorphicRatio:
+    overrideState: 1
+    value: 0
+  color:
+    overrideState: 1
+    value: {r: 1, g: 0, b: 0.9372549, a: 1}
+  fastMode:
+    overrideState: 1
+    value: 1
+  dirtTexture:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  dirtIntensity:
+    overrideState: 0
+    value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,6 +61,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: 3812785801645239952}
+  - {fileID: -93616303586092265}
+  - {fileID: 331965876641798418}
+--- !u!114 &331965876641798418
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  focusDistance:
+    overrideState: 1
+    value: 10
+  aperture:
+    overrideState: 1
+    value: 7
+  focalLength:
+    overrideState: 1
+    value: 100
+  kernelSize:
+    overrideState: 1
+    value: 1
 --- !u!114 &3812785801645239952
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -31,7 +108,7 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   gradingMode:
-    overrideState: 1
+    overrideState: 0
     value: 0
   externalLut:
     overrideState: 0
@@ -66,37 +143,37 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   temperature:
-    overrideState: 1
-    value: 37
+    overrideState: 0
+    value: -33.1
   tint:
-    overrideState: 1
-    value: -100
+    overrideState: 0
+    value: 2.7
   colorFilter:
-    overrideState: 1
+    overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
-    overrideState: 1
+    overrideState: 0
     value: 31
   saturation:
-    overrideState: 1
-    value: 90
+    overrideState: 0
+    value: -59
   brightness:
-    overrideState: 1
-    value: 4
+    overrideState: 0
+    value: 57.3
   postExposure:
     overrideState: 1
     value: 0
   contrast:
     overrideState: 1
-    value: -8
+    value: 4
   mixerRedOutRedIn:
-    overrideState: 1
+    overrideState: 0
     value: 13.31
   mixerRedOutGreenIn:
-    overrideState: 1
+    overrideState: 0
     value: -73
   mixerRedOutBlueIn:
-    overrideState: 1
+    overrideState: 0
     value: 15
   mixerGreenOutRedIn:
     overrideState: 0
@@ -117,14 +194,14 @@ MonoBehaviour:
     overrideState: 0
     value: 100
   lift:
-    overrideState: 1
-    value: {x: 0.98105884, y: 1, z: 0, w: 0}
+    overrideState: 0
+    value: {x: 0.9924234, y: 1, z: 0.99703306, w: 0}
   gamma:
-    overrideState: 1
-    value: {x: 1, y: 0, z: 0.058165073, w: 0}
+    overrideState: 0
+    value: {x: 1, y: 0.9944505, z: 0.9953256, w: 0}
   gain:
-    overrideState: 1
-    value: {x: 0.5738008, y: 0.5384767, z: 1, w: 0}
+    overrideState: 0
+    value: {x: 0.94669807, y: 0.8962303, z: 1, w: 0}
   masterCurve:
     overrideState: 0
     value:
@@ -766,34 +843,7 @@ MonoBehaviour:
     value:
       curve:
         serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0.030927835
-          value: 0.6985294
-          inSlope: 2.4963236
-          outSlope: 2.4963236
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 0.3539519
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
-        - serializedVersion: 3
-          time: 0.5979381
-          value: 0.102941155
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0
+        m_Curve: []
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class ShopAnimation : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class ShopAnimation : MonoBehaviour
     [SerializeField] private Button _startButton;
 
     private RectTransform _buttonTransform;
-    private bool _moveLeft = true;
+    private bool _open = true;
+
+    public event Action Closed;
 
     private void OnEnable()
     {
@@ -31,13 +34,13 @@ public class ShopAnimation : MonoBehaviour
 
     private void Move()
     {
-        if (_moveLeft)
+        if (_open)
             MoveLeft();
         else
             MoveRight();
 
-        _moveLeft = !_moveLeft;
-        _startButton.gameObject.SetActive(_moveLeft);
+        _open = !_open;
+        _startButton.gameObject.SetActive(_open);
     }
 
     private void MoveLeft()
@@ -50,5 +53,6 @@ public class ShopAnimation : MonoBehaviour
     {
         float targetPositionX = 0;
         _panelTransform.DOAnchorPosX(targetPositionX, _animationDuration);
+        Closed?.Invoke();
     }
 }

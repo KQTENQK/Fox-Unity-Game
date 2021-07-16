@@ -25,18 +25,18 @@ public class StartData : Data
     private void OnHeroSold(Hero hero)
     {
         ctx.BuyedHeroesName.Add(hero.name);
-        File.WriteAllText(PathToJson, JsonUtility.ToJson(ctx));
+        Write(ctx);
     }
 
     private void OnHeroSelected(Hero hero)
     {
         ctx.SelectedHero = hero.Name;
-        File.WriteAllText(PathToJson, JsonUtility.ToJson(ctx));
+        Write(ctx);
     }
 
     private void OnBalancehanged()
     {
         ctx.Balance = _player.Money;
-        File.WriteAllText(PathToJson, JsonUtility.ToJson(ctx));
+        Write(ctx);
     }
 }

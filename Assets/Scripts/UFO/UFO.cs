@@ -14,10 +14,5 @@ public class UFO : MonoBehaviour
         {
             treeAnimation.StartDestruction(transform, _deltaRotationAngle, _pullingSpeed, _randomSpread);
         }
-
-        if (other.gameObject.TryGetComponent<Hero>(out Hero hero))
-        {
-            Debug.Log("dead");
-        }
     }
 }

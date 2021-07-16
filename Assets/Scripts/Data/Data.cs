@@ -19,6 +19,8 @@ public abstract class Data : MonoBehaviour
 
     protected string PathToJson;
 
+    private string _key = "bfweSFEFfBfFDVD.VDSFFFEsfrefre.egGGRGFDFEKMLLOFEWss.hFhrg";
+
     protected void Awake()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -41,17 +43,31 @@ public abstract class Data : MonoBehaviour
             initialPlayerContext.BuyedHeroesName.Add(initialHero);
             ctx = initialPlayerContext;
 
-            File.WriteAllText(PathToJson, JsonUtility.ToJson(initialPlayerContext));
+            Write(initialPlayerContext);
         }
         else
         {
             ctx = new PlayerContext();
-            ctx = JsonUtility.FromJson<PlayerContext>(File.ReadAllText(PathToJson));
+            ctx = JsonUtility.FromJson<PlayerContext>(Read());
         }
+    }
+
+    protected void Write(PlayerContext context)
+    {
+        string gamma = _key;
+        string data = Transcriptor.Encode(JsonUtility.ToJson(context), gamma);
+        File.WriteAllText(PathToJson, data);
+    }
+
+    protected string Read()
+    {
+        string gamma = _key;
+        string data = Transcriptor.Decode(File.ReadAllText(PathToJson), gamma);
+        return data;
     }
 
     protected void OnApplicationPause(bool pause)
     {
-        File.WriteAllText(PathToJson, JsonUtility.ToJson(ctx));
+        Write(ctx);
     }
 }

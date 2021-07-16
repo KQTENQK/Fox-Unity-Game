@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class DeathScreenAnimator : MonoBehaviour
 {
-    [SerializeField] private RectTransform _targetPoint;
     [SerializeField] private float _animationDuration;
     [SerializeField] private Player _player;
 
@@ -21,7 +20,7 @@ public class DeathScreenAnimator : MonoBehaviour
 
     private void OnDied()
     {
-        float targetPositionX = _targetPoint.anchoredPosition.x;
-        GetComponent<RectTransform>().DOAnchorPosX(targetPositionX, _animationDuration);
+        float _targetX = 0;
+        GetComponent<RectTransform>().DOAnchorPosX(_targetX, _animationDuration);
     }
 }

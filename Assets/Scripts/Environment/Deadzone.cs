@@ -8,7 +8,7 @@ public class Deadzone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Plane>(out Plane plane))
-            Destroy(plane.gameObject);
+            plane.Hide();
 
         if (other.TryGetComponent<UFO>(out UFO ufo))
             ufo.gameObject.SetActive(false);

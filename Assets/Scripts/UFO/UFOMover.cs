@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class UFOMover : MonoBehaviour
 {
+    [SerializeField] private bool IsAnchoredOnPlane;
     [SerializeField] private float _changeDirectionTimeOut;
     [SerializeField] private float _maxDirectionTimeOutSpred;
     [SerializeField] private float _xEdge;
     [SerializeField] private float _speed;
+    [SerializeField] private Vector3 _startAnchoredDirection;
 
     private Vector3 _rightForward = new Vector3(1, 0, 1);
     private Vector3 _leftForward = new Vector3(-1, 0, 1);
@@ -24,6 +26,9 @@ public class UFOMover : MonoBehaviour
         _timeOut = _changeDirectionTimeOut + Random.Range(0, _maxDirectionTimeOutSpred);
         _elapsedTime = 0;
         _currentDirection = SelectDirection();
+
+        if (IsAnchoredOnPlane)
+            _currentDirection = _startAnchoredDirection;
     }
 
     private void Update()

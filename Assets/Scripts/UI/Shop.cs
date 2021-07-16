@@ -9,6 +9,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private HeroView _template;
     [SerializeField] private GameObject _itemContainer;
     [SerializeField] private Data _playerData;
+    [SerializeField] private ShopAnimation _shopAnimation;
 
     private List<HeroView> _views;
     private Hero _currentSelectedHero;
@@ -16,6 +17,22 @@ public class Shop : MonoBehaviour
     public event Action<Hero> HeroSelected;
     public event Action<Hero> HeroSold;
     public event Action HeroDeselected;
+
+
+    private void OnEnable()
+    {
+        _shopAnimation.Closed += OnClosed;
+    }
+
+    private void OnDisable()
+    {
+        foreach (var view in _views)
+        {
+            view.Selected -= OnSelected;
+        }
+
+        _shopAnimation.Closed -= OnClosed;
+    }
 
     private void Start()
     {
@@ -75,6 +92,21 @@ public class Shop : MonoBehaviour
         TrySellHero(hero, heroView);
     }
 
+    private void OnClosed()
+    {
+        Hero savedHero = null;
+
+        foreach (var hero in _heroes)
+        {
+            if (_playerData.ctx.SelectedHero == hero.Name)
+                savedHero = hero;
+        }
+
+        Destroy(_player.GetComponentInChildren<Hero>().gameObject);
+        var selectedHero = Instantiate(savedHero, _player.transform);
+        selectedHero.transform.localRotation = Quaternion.Euler(0, 180, 0);
+    }
+
     private void TrySellHero(Hero hero, HeroView heroView)
     {
         if (hero.Price <= _player.Money)
@@ -84,14 +116,6 @@ public class Shop : MonoBehaviour
             heroView.Selling -= OnSelling;
             HeroSold?.Invoke(hero);
             HeroSelected?.Invoke(hero);
-        }
-    }
-
-    private void OnDisable()
-    {
-        foreach (var view in _views)
-        {
-            view.Selected -= OnSelected;
         }
     }
 }

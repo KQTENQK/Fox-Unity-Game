@@ -22,7 +22,7 @@ public class GameData : Data
     private void OnBalaceChanged()
     {
         ctx.Balance = _player.Money;
-        File.WriteAllText(PathToJson, JsonUtility.ToJson(ctx));
+        Write(ctx);
     }
 
     private void OnDied()
@@ -30,7 +30,7 @@ public class GameData : Data
         if (_player.Score > ctx.BestScore)
         {
             ctx.BestScore = _player.Score;
-            File.WriteAllText(PathToJson, JsonUtility.ToJson(ctx));
+            Write(ctx);
         }
     }
 }

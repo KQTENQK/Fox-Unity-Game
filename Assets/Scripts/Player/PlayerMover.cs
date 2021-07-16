@@ -8,14 +8,20 @@ using UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerMover : MonoBehaviour
 {
+    private const float SpeedFactor = 0.01f;
+
     [SerializeField] private float _speed;
+    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _speedChangeDuration;
     [SerializeField] private float _xSwipeWayStep;
     [SerializeField] private float _xSwipeLimit;
     [SerializeField] private float _turningTime;
     [SerializeField] private SwipeDetecter _swipeDetecter;
 
     private int _swipeCount;
+    private float _startSpeed;
     private Vector3 _moveDirection;
+    private bool _stopIncreasingSpeed;
 
     private void OnEnable()
     {
@@ -30,7 +36,9 @@ public class PlayerMover : MonoBehaviour
 
     private void Start()
     {
-        _moveDirection = transform.forward * _speed;
+        _startSpeed = _speed;
+
+        StartCoroutine(IncreaseSpeed());
     }
 
     private void FixedUpdate()
@@ -40,6 +48,7 @@ public class PlayerMover : MonoBehaviour
 
     public void Stop()
     {
+        _stopIncreasingSpeed = true;
         _moveDirection = Vector3.zero;
     }
 
@@ -56,6 +65,21 @@ public class PlayerMover : MonoBehaviour
         {
             StartCoroutine(Turn(direction));
             _swipeCount += (int)direction.x;
+        }
+    }
+
+    private IEnumerator IncreaseSpeed()
+    {
+        while (!_stopIncreasingSpeed)
+        {
+            if (_speed <= _maxSpeed)
+                _speed++;
+            else
+                _speed = _startSpeed;
+
+            _moveDirection = transform.forward * _speed * SpeedFactor;
+
+            yield return new WaitForSeconds(_speedChangeDuration);
         }
     }
 

@@ -7,18 +7,17 @@ public class Plane : MonoBehaviour
 {
     [SerializeField] private GameObject _planeBuilderTemplate;
 
-    public event UnityAction PlayerCame;
-
-    private void Start()
-    {
-        Instantiate(_planeBuilderTemplate, transform);
-    }
+    public event UnityAction<Plane> PlayerCame;
+    public event UnityAction<Plane> Hiding;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Hero>(out Hero hero))
-        {
-            PlayerCame?.Invoke();
-        }
+            PlayerCame?.Invoke(this);
+    }
+
+    public void Hide()
+    {
+        Hiding?.Invoke(this);
     }
 }
