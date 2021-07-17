@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class Plane : MonoBehaviour
 {
-    [SerializeField] private GameObject _planeBuilderTemplate;
-
     public event UnityAction<Plane> PlayerCame;
     public event UnityAction<Plane> Hiding;
 
